@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    int n,q;
+    int lastAnswer=0;
+    cin >> n >> q;
+    vector<int> seqList[n];
+    while(q--)
+    {
+        int type,x,y;
+        cin >> type >> x >> y;
+        int pos = (x^lastAnswer)%n;
+        if(type==1){  
+            seqList[pos].push_back(y);
+        }else {
+            int index = y%((int)seqList[pos].size());
+            lastAnswer = seqList[pos][index];
+            cout << lastAnswer << endl;
+        }
+    }
+}
